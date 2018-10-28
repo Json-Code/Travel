@@ -1,0 +1,58 @@
+1.HomeHeader
+   第一节
+	1.下载引入了reset.css给文件统一初始化css样式
+	2.下载引入了border.css给文件统一css边框
+	2.使用了fastclick模块 Vue.config.productionTip = false解决了移动端点击300ms的延迟问题
+	4.使用了stylus和stylus-loader模块 lang="stylus" scoped简化了css写法
+   第二节
+	1.使用iconfont 引入iconfont.css修改iconfont.css内的字体图标路径 通过span.iconfont在标签内写入&#xe624;编码添加字体图标
+	2.通过build路径下的webpack.base.conf.js的resolve[alias]简化路径
+	3.通过设置varibles.styl文件写入变量$bgColor = #00bcd4在style内引入使用@import '~styles/varibles.styl';
+
+
+-------------------------------------------------------------------------------------------
+2.首页轮播图index-swiper
+   第一节
+	1.在码云上创建index-swiper分支
+	2.gti pull 下载分支
+	  gitcheckout index-swiper 切换到index-swiper分支
+	  git status 开始开发
+	3.开发首页轮播
+		1.下载npm install vue-awesome-swiper@2.6.7 --save快速开发轮播图
+	4.提交index-swiper
+		1.git add .
+		2.git commit -m 'change'
+		3.git push
+		4.git checkout master   切换到master主分支
+		5.git merge origin/index-swiper  把index-swiper合并到主分支上
+		6.git push	上传master
+
+-------------------------------------------------------------------------------------------
+3.首页图标区index-icons
+    第一节
+	与首页轮播相似
+	nested: true
+	autoplay: false
+	都可以停止轮播
+
+------------------------------------------------------------------------------------------
+4.首页推荐index-recommend
+	1.使用了flex:1在使用ellipsis()需要在父标签上加上min-width:0
+
+-------------------------------------------------------------------------------------------
+5.首页ajax请求index-ajax
+	1.下载npm install axios --save
+	2.在home.vue引入axios
+	3.在gitignore中写入static/mock使这个文件夹不上传到git
+	4.在使用axios时为了不避免出错需要使用代理
+在config文件夹中修改index.js
+这个功能是webpack-dev-server提供的功能
+    proxyTable: {
+      '/api': {
+        target: 'http://localhost:8080',
+        pathRewrite: {
+          '^/api': '/static/mock'
+        }
+      }
+    }
+在请求的地址为/api时把以/api开头的部分替换成/static/mock
